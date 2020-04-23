@@ -16,7 +16,8 @@ function Login(props) {
         password: password,
       })
       .then((response) => {
-        localStorage.setItem("token", response.data.jwt);
+        localStorage.setItem("token", response.data.jwtToken);
+
         props.history.push("/profile")
       })
       .catch((error) => {
