@@ -1,22 +1,24 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from 'react'
 
 function WrongPage(props) {
-  useEffect(() => {
-    redirectToHomePage();
-  }, []);
 
-  const redirectToHomePage = () => {
-    setTimeout(() => {
-      props.history.push("/");
-    }, 2000);
-  };
+    useEffect(() => {
+        redirectToHomePage();
+    });
 
-  return (
-    <div>
-      Wrong page
-      <button onClick={redirectToHomePage}>Click</button>
-    </div>
-  );
+
+
+    const redirectToHomePage = () => {
+        setTimeout(() => {props.history.push('/');}, 2000)
+
+    }
+
+    return (
+        <div>
+            Wrong page
+            <button onClick={redirectToHomePage}>Click</button>
+        </div>
+    )
 }
 
-export default WrongPage;
+export default WrongPage
