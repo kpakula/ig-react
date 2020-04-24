@@ -2,27 +2,34 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 
 function Profile() {
-    // useEffect(() => {
-    //     axios({ method: 'get', url: 'http://localhost:8080/home', headers: { 'Authorization': 'Bearer ' + localStorage.getItem("token") } })
-    
-    // })
-    delete axios.defaults.headers.common["Authorization"];
-        const jwt = `Bearer ${localStorage.getItem("token")}`;
 
-        axios.get("http://localhost:8080/home", { headers: {
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            "Access-Control-Allow-Origin": "*",
             "Authorization" : `Bearer ${localStorage.getItem("token")}`
-        }})
+        }
+      };
+
+    const clicked = (e) => {
+        e.preventDefault();
+
+          console.log(localStorage.getItem("token"))
+        axios.post("http://localhost:8080/something", {},  axiosConfig)
         .then((response) => {
             console.log(response);
         })
         .catch((error) => {
             console.log(error);
         })
+        console.log(axiosConfig)
+    }
 
     // })
     return (
 
         <div>
+        <button onClick={clicked}>Benc</button>
                     <div>Profile</div>
         </div>
     )
