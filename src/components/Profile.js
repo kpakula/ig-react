@@ -1,28 +1,27 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import axios from 'axios'
+
+const axiosConfig = {
+    headers: {
+        'Content-Type': 'application/json;charset=UTF-8;',
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`,
+    }
+  };
 
 function Profile() {
 
-    let axiosConfig = {
-        headers: {
-            'Content-Type': 'application/json;charset=UTF-8',
-            "Access-Control-Allow-Origin": "*",
-            "Authorization" : `Bearer ${localStorage.getItem("token")}`
-        }
-      };
 
     const clicked = (e) => {
-        e.preventDefault();
+        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem("token") ;
 
-          console.log(localStorage.getItem("token"))
-        axios.post("http://localhost:8080/something", {},  axiosConfig)
+        axios.post("http://localhost:8080/profile", {}, axiosConfig)
         .then((response) => {
             console.log(response);
         })
         .catch((error) => {
             console.log(error);
         })
-        console.log(axiosConfig)
+
     }
 
     // })

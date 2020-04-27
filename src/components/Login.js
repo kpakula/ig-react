@@ -25,18 +25,10 @@ function Login(props) {
       })
     }
 
-  const clearUsername = () => {
-      setUsername("");
-  }
-
   const clearPassword = () => {
       setPassword("");
   }
 
-  const clear = () => {
-      clearUsername();
-      clearPassword();
-  }
 
   return (
     <div>
