@@ -1,37 +1,48 @@
-import React from 'react'
-import axios from 'axios'
-
-const axiosConfig = {
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8;',
-        "Authorization" : `Bearer ${localStorage.getItem("token")}`,
-    }
-  };
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Profile() {
+  const [username, setUsername] = useState("");
+  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
 
+  const getProfileInformationRequest = (props) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8;",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
 
-    const clicked = (e) => {
-        // axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem("token") ;
+    axios
+      .get("http://localhost:8080/profile", config)
+      .then((response) => {
+        setUsername(response.data.username);
+        setId(response.data.id);
+        setEmail(response.data.email);
 
-        axios.post("http://localhost:8080/profile", {}, axiosConfig)
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    }
+//   const updateData = (response) => {
 
-    // })
-    return (
+//   }
 
-        <div>
-        <button onClick={clicked}>Benc</button>
-                    <div>Profile</div>
-        </div>
-    )
+  useEffect(() => {
+    getProfileInformationRequest();
+  }, []);
+
+  // })
+  return (
+    <div>
+      <div>
+        <h1>Profile</h1>
+      </div>
+    </div>
+  );
 }
 
-export default Profile
+export default Profile;
