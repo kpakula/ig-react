@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import auth from "./Auth";
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -17,8 +18,9 @@ function Login(props) {
       })
       .then((response) => {
         localStorage.setItem("token", response.data.jwtToken);
-
-        props.history.push("/profile")
+        auth.login(() => {
+          props.history.push("/profile")
+        })
       })
       .catch((error) => {
         clearPassword();

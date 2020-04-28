@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import auth from "./Auth";
 
-function Profile() {
+function Profile(props) {
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
@@ -41,6 +42,11 @@ function Profile() {
       <div>
         <h1>Profile</h1>
       </div>
+      <button onClick={() => {
+          auth.logout(() => {
+            props.history.push("/");
+          })
+      }}>Logout</button>
     </div>
   );
 }

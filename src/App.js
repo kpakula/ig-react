@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import WrongPage from "./components/WrongPage";
 import Profile from "./components/Profile";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/" exact component={Home}></Route>
           <Route path="/register" exact component={Register} />
           <Route path="/login" exact component={Login} />
-          <Route path="/profile" exact component={Profile} />
+          <ProtectedRoute path="/profile" exact component={Profile} />
           <Route component={WrongPage} />
         </Switch>
       </div>
