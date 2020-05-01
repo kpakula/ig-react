@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import auth from "./Auth";
 
+import Navbar from "./Navbar";
+
+
+
 function Profile(props) {
+
+
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
@@ -33,12 +39,14 @@ function Profile(props) {
 //   }
 
   useEffect(() => {
+    console.log(auth.isAuthenticated())
     getProfileInformationRequest();
   }, []);
 
   // })
   return (
     <div>
+    <Navbar />
       <div>
         <h1>Profile</h1>
       </div>

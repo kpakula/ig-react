@@ -1,23 +1,23 @@
 
 class Auth {
-    constructor() {
-        this.authenticated = false
-    }
 
     login(callback) {
-        this.authenticated = true;
+        localStorage.setItem("isAuth", true);
         callback();
     }
 
+
     logout(callback) {
-        this.authenticated = false;
+        localStorage.removeItem("token");
+        localStorage.removeItem("isAuth");
         callback();
     }
 
 
     isAuthenticated() {
-        return this.authenticated;
+        return localStorage.getItem("isAuth");
     }
 }
+const instance = new Auth();
 
-export default new Auth()
+export default instance;

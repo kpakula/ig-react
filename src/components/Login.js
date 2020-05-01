@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import auth from "./Auth";
 
 function Login(props) {
+
+
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +28,7 @@ function Login(props) {
         })
       })
       .catch((error) => {
+        console.log(error)
         clearPassword();
       })
     }
@@ -33,7 +39,9 @@ function Login(props) {
 
 
   return (
+
     <div>
+      
       <h1>Login</h1>
       <div>
         <Link to="/">Home</Link>
