@@ -6,7 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import WrongPage from "./components/WrongPage";
-import Profile from "./components/Profile";
+import Profile from "./components/profile/Profile";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {

@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import { Link } from "react-router-dom";
 
-function Home() {
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+function Home(props) {
+  const [open, setOpen] = React.useState(false);
+
+
+  useEffect(() => {
+    handleClick();
+  }, [])
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  console.log(props.history)
+
   return (
-    <div className="home">
-    <h1>Home</h1>
+    <div>
       <div>
         <Link to="/">Home</Link>
       </div>
@@ -14,6 +40,14 @@ function Home() {
       <div>
         <Link to="/register">Register</Link>
       </div>
+
+      <button onClick={handleClick}>Open</button>
+
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          You have been logged out
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

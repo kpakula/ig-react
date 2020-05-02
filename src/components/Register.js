@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Typography } from "@material-ui/core";
 
 function Register(props) {
   const [username, setUsername] = useState("");
@@ -38,8 +39,10 @@ function Register(props) {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div>      
+    <Typography variant="h3"  gutterBottom>
+    Register
+  </Typography>
       <div>
         <Link to="/">Home</Link>
       </div>

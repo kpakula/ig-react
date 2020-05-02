@@ -2,14 +2,11 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  FormGroup,
-  FormControlLabel,
   MenuItem,
   AppBar,
   Toolbar,
   Typography,
   Menu,
-  createMuiTheme,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
@@ -34,9 +31,9 @@ function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);

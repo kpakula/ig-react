@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import auth from "./Auth";
+import auth from "../Auth";
 
-import Navbar from "./Navbar";
+import Navbar from "../global/Navbar";
+import { makeStyles } from "@material-ui/core";
 
-
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+    height: '100%'
+  },
+});
 
 function Profile(props) {
+  const classes = useStyles();
 
 
   const [username, setUsername] = useState("");
@@ -34,9 +41,12 @@ function Profile(props) {
       });
   };
 
-//   const updateData = (response) => {
+  const handleLogout = () => {
+    auth.logout(() => {
+      props.history.push("/");
+    })
+  } 
 
-//   }
 
   useEffect(() => {
     console.log(auth.isAuthenticated())
@@ -45,16 +55,15 @@ function Profile(props) {
 
   // })
   return (
-    <div>
+    <div className={classes.root}>
     <Navbar />
       <div>
+      {username}
+      {id}
+      {email}
         <h1>Profile</h1>
       </div>
-      <button onClick={() => {
-          auth.logout(() => {
-            props.history.push("/");
-          })
-      }}>Logout</button>
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }

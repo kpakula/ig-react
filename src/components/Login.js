@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import auth from "./Auth";
+import { Typography } from "@material-ui/core";
 
 function Login(props) {
 
@@ -41,8 +42,9 @@ function Login(props) {
   return (
 
     <div>
-      
-      <h1>Login</h1>
+      <Typography variant="h3"  gutterBottom>
+        Login
+      </Typography>
       <div>
         <Link to="/">Home</Link>
       </div>
