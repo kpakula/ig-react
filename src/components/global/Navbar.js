@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -63,7 +63,7 @@ function Navbar() {
            color='secondary'>
             Photos
           </Typography>
-          {auth && (
+          {true && (
             <div>
               <IconButton
                 aria-label="account of current user"

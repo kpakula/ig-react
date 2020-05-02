@@ -8,15 +8,18 @@ import {
   Paper,
   makeStyles,
   Avatar,
-  Box,
   Button,
   TextField,
   CssBaseline,
   Snackbar,
+  InputAdornment,
 } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -128,6 +131,13 @@ function Login(props) {
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
+              InputProps={{
+            startAdornment: (
+            <InputAdornment position="start" >
+              <AccountCircle onClick={() => console.log("circle")} />
+            </InputAdornment>
+          ),
+        }}
             />
 
             <TextField
@@ -144,6 +154,14 @@ function Login(props) {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+
+              InputProps={{
+            startAdornment: (
+            <InputAdornment position="start">
+              <VisibilityOffIcon />
+            </InputAdornment>
+          ),
+        }}
             />
 
             <Button
@@ -154,7 +172,8 @@ function Login(props) {
               className={classes.submit}
               onClick={onSubmit}
             >
-              Sign In
+            <DoubleArrowIcon />
+
             </Button>
             <Grid container>
               <Grid item>

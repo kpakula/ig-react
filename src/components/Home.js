@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Link } from "react-router-dom";
@@ -10,11 +10,6 @@ function Alert(props) {
 function Home(props) {
   const [open, setOpen] = React.useState(false);
 
-
-  useEffect(() => {
-    handleClick();
-    console.log(props.history)
-  }, [])
 
   const handleClick = () => {
     setOpen(true);
