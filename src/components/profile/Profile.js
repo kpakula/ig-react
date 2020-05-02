@@ -3,7 +3,7 @@ import axios from "axios";
 import auth from "../Auth";
 
 import Navbar from "../global/Navbar";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, Container, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -63,6 +63,13 @@ function Profile(props) {
       {email}
         <h1>Profile</h1>
       </div>
+
+      <Container maxWidth="xl"> 
+      <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} />
+
+      </Container>
+
+
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

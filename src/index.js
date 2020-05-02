@@ -8,21 +8,20 @@ import { purple, grey } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
-    secondary: {
-      main: grey[100]
-    },
-    type: 'dark',
+    // primary: purple,
+    // secondary: {
+    //   main: grey[100]
+    // },
+    // type: 'dark',
   }
 });
 
 
 ReactDOM.render(
-  <React.StrictMode>
     <MuiThemeProvider theme={theme}>
       <App />
     </MuiThemeProvider>
-  </React.StrictMode>,
+,
   document.getElementById("root")
 );
 

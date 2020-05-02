@@ -13,6 +13,7 @@ function Home(props) {
 
   useEffect(() => {
     handleClick();
+    console.log(props.history)
   }, [])
 
   const handleClick = () => {
