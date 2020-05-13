@@ -78,6 +78,7 @@ function Register(props) {
   const successRedirect = () => {
     props.history.push("/home");
   };
+  
   const displayError = () => {
     setOpen(true);
   };
@@ -157,7 +158,7 @@ function Register(props) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, repeatPassword, email);
+
     if (validateUser()) {
       axios
         .post("http://localhost:8080/register", {
@@ -166,13 +167,11 @@ function Register(props) {
           email: email,
         })
         .then((response) => {
-          console.log(response);
-
-          // clear();
-          // successRedirect();
+          clear();
+          successRedirect();
         })
         .catch((error) => {
-          console.log(error);
+          console.warn(error);
           displayError();
         });
     }

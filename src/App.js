@@ -20,6 +20,7 @@ function App() {
           <ProtectedRoute path="/profile" exact component={Profile} />
           <Route component={WrongPage} />
         </Switch>
+
       </div>
     </Router>
   );

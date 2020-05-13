@@ -6,13 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 
 const theme = createMuiTheme({
-  palette: {
-    // primary: purple,
-    // secondary: {
-    //   main: grey[100]
-    // },
-    // type: 'dark',
-  }
+
 });
 
 

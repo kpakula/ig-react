@@ -27,13 +27,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
   const classes = useStyles();
-  // const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  // const handleChange = (event) => {
-  //   setAuth(event.target.checked);
-  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -59,8 +55,7 @@ function Navbar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" 
-          className={classes.title}
-           color='secondary'>
+          className={classes.title} >
             Photos
           </Typography>
           {true && (

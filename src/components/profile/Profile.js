@@ -3,18 +3,43 @@ import axios from "axios";
 import auth from "../Auth";
 
 import Navbar from "../global/Navbar";
-import { makeStyles, Container, Typography } from "@material-ui/core";
+import {
+  makeStyles,
+  Container,
+  Typography,
+  Grid,
+  Paper,
+  ThemeProvider,
+  Avatar,
+} from "@material-ui/core";
+import { deepPurple } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    height: '100%'
+    width: "100%",
+    height: "100%",
+    flexGrow: 1,
   },
-});
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+  mainContainer: {
+    paddingTop: theme.spacing(2),
+  },
+  purple: {
+    color: theme.palette.getContrastText(deepPurple[500]),
+    backgroundColor: deepPurple[500],
+  },
+  largeAvatar: {
+    width: theme.spacing(15),
+    height: theme.spacing(15),
+  },
+}));
 
 function Profile(props) {
   const classes = useStyles();
-
 
   const [username, setUsername] = useState("");
   const [id, setId] = useState("");
@@ -34,7 +59,6 @@ function Profile(props) {
         setUsername(response.data.username);
         setId(response.data.id);
         setEmail(response.data.email);
-
       })
       .catch((error) => {
         console.log(error);
@@ -44,33 +68,48 @@ function Profile(props) {
   const handleLogout = () => {
     auth.logout(() => {
       props.history.push("/");
-    })
-  } 
-
+    });
+  };
 
   useEffect(() => {
-    console.log(auth.isAuthenticated())
+    console.log(auth.isAuthenticated());
     getProfileInformationRequest();
   }, []);
 
   // })
   return (
     <div className={classes.root}>
-    <Navbar />
-      <div>
-      {username}
-      {id}
-      {email}
-        <h1>Profile</h1>
-      </div>
+      <Navbar />
+      <Container maxWidth="xl" className={classes.mainContainer}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Grid container>
+              <Grid item xs={3}>
+                <Avatar
+                  alt="Avatar"
+                  className={[classes.largeAvatar, classes.purple].join(" ")}
+                ></Avatar>
+              </Grid>
+              <Grid item xs={3}>
+              <h1>Profile</h1>
+              </Grid>
+            </Grid>
 
-      <Container maxWidth="xl"> 
-      <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} />
 
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            {id}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            {username}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            {email}
+          </Grid>
+        </Grid>
       </Container>
 
-
-      <button onClick={handleLogout}>Logout</button>
+      {/* <button onClick={handleLogout}>Logout</button> */}
     </div>
   );
 }
